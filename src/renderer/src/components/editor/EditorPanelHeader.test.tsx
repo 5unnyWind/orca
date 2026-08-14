@@ -91,7 +91,9 @@ const baseProps = {
   markdownFrontmatterVisible: false,
   sideBySide: false,
   openFileState: { canOpen: false },
+  canCopyMarkdown: false,
   onCopyPath: vi.fn(),
+  onCopyMarkdown: vi.fn(async () => false),
   onOpenDiffTargetFile: vi.fn(),
   onOpenPreviewToSide: vi.fn(),
   onOpenMarkdownPreview: vi.fn(),
@@ -164,5 +166,36 @@ describe('EditorPanelHeader', () => {
         isMarkdown: true
       })
     ).not.toContain('data-artifact-publish')
+  })
+
+  it('offers copy markdown only on non-diff Markdown surfaces', () => {
+    expect(
+      renderHeader({
+        isDiffSurface: false,
+        isMarkdown: true,
+        canCopyMarkdown: true
+      })
+    ).toContain('aria-label="Copy markdown"')
+    expect(
+      renderHeader({
+        isDiffSurface: true,
+        isMarkdown: true,
+        canCopyMarkdown: true
+      })
+    ).not.toContain('aria-label="Copy markdown"')
+    expect(
+      renderHeader({
+        isDiffSurface: false,
+        isMarkdown: false,
+        canCopyMarkdown: true
+      })
+    ).not.toContain('aria-label="Copy markdown"')
+    expect(
+      renderHeader({
+        isDiffSurface: false,
+        isMarkdown: true,
+        canCopyMarkdown: false
+      })
+    ).toContain('aria-label="Markdown is not ready to copy"')
   })
 })

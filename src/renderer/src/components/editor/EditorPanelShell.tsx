@@ -22,6 +22,7 @@ type EditorPanelShellProps = {
   activeViewStateId: string | null | undefined
   model: EditorPanelRenderModel
   copiedPathVisible: boolean
+  canCopyMarkdown: boolean
   showMarkdownTableOfContents: boolean
   canShowMarkdownFrontmatterToggle: boolean
   markdownFrontmatterVisible: boolean
@@ -35,6 +36,7 @@ type EditorPanelShellProps = {
   renameError: string | null
   disableRenameBrowse: boolean
   onCopyPath: () => void
+  onCopyMarkdown: () => Promise<boolean>
   onOpenDiffTargetFile: (preferredMarkdownViewMode?: 'rich') => void
   onOpenPreviewToSide: () => void
   onOpenMarkdownPreview: () => void
@@ -62,6 +64,7 @@ export function EditorPanelShell({
   activeViewStateId,
   model,
   copiedPathVisible,
+  canCopyMarkdown,
   showMarkdownTableOfContents,
   canShowMarkdownFrontmatterToggle,
   markdownFrontmatterVisible,
@@ -75,6 +78,7 @@ export function EditorPanelShell({
   renameError,
   disableRenameBrowse,
   onCopyPath,
+  onCopyMarkdown,
   onOpenDiffTargetFile,
   onOpenPreviewToSide,
   onOpenMarkdownPreview,
@@ -121,7 +125,9 @@ export function EditorPanelShell({
           markdownFrontmatterVisible={markdownFrontmatterVisible}
           sideBySide={sideBySide}
           openFileState={model.openFileState}
+          canCopyMarkdown={canCopyMarkdown}
           onCopyPath={onCopyPath}
+          onCopyMarkdown={onCopyMarkdown}
           onOpenDiffTargetFile={onOpenDiffTargetFile}
           onOpenPreviewToSide={onOpenPreviewToSide}
           onOpenMarkdownPreview={onOpenMarkdownPreview}
