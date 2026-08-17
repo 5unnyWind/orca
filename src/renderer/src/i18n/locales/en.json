@@ -16547,7 +16547,8 @@
           "026653f21f": "CSS",
           "4daed43ae3": "C++",
           "4227cf50fe": "Bash",
-          "13822cdfda": "Plain text"
+          "13822cdfda": "Plain text",
+          "plantuml": "PlantUML"
         },
         "RichMarkdownDocLinkMenu": {
           "e17b987473": "↑↓ navigate&nbsp;&nbsp;↵ select&nbsp;&nbsp;esc dismiss",
@@ -16918,7 +16919,7 @@
           "dismissAccessRequest": "Dismiss",
           "allowDirectory": "Allow folder",
           "directoryAccessRequestOverflow": "{{folders}}, and {{count}} more",
-          "directoryAccessRequestMultiple": "This preview wants to read files in {{folders}}.",
+          "directoryAccessRequestMultiple": "This preview wants to read files in {{path}}.",
           "allowDirectories": "Allow {{count}} folders",
           "editAddressControl": "Edit address"
         },
@@ -16933,6 +16934,10 @@
         },
         "useMarkdownDocuments": {
           "listFailed": "Failed to list Markdown documents."
+        },
+        "PlantUmlBlock": {
+          "line": "line",
+          "diagramError": "Diagram error:"
         }
       },
       "diff": {
