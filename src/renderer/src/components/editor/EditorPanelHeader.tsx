@@ -50,6 +50,7 @@ type EditorPanelHeaderProps = {
   markdownFrontmatterVisible: boolean
   sideBySide: boolean
   openFileState: EditorHeaderOpenFileState
+  canShowMarkdownCopy: boolean
   canCopyMarkdown: boolean
   onCopyPath: () => void
   onCopyMarkdown: () => Promise<boolean>
@@ -87,6 +88,7 @@ export function EditorPanelHeader({
   markdownFrontmatterVisible,
   sideBySide,
   openFileState,
+  canShowMarkdownCopy,
   canCopyMarkdown,
   onCopyPath,
   onCopyMarkdown,
@@ -328,7 +330,7 @@ export function EditorPanelHeader({
           </Tooltip>
         </TooltipProvider>
       )}
-      {isMarkdown && !isDiffSurface && (
+      {canShowMarkdownCopy && (
         <EditorPanelMarkdownCopyButton
           key={activeFile.id}
           canCopy={canCopyMarkdown}

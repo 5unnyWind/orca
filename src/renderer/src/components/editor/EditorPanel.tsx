@@ -337,6 +337,7 @@ function EditorPanelInner({
           activeViewStateId={activeViewStateId}
           model={model}
           copiedPathVisible={copiedPathToast?.fileId === activeFile.id}
+          canShowMarkdownCopy={mdHeader.markdownCopyState.canShow}
           canCopyMarkdown={mdHeader.markdownCopyState.canCopy}
           showMarkdownTableOfContents={isMarkdownTableOfContentsVisible}
           canShowMarkdownFrontmatterToggle={mdHeader.canShowMarkdownFrontmatterToggle}

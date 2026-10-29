@@ -22,6 +22,7 @@ type EditorPanelShellProps = {
   activeViewStateId: string | null | undefined
   model: EditorPanelRenderModel
   copiedPathVisible: boolean
+  canShowMarkdownCopy: boolean
   canCopyMarkdown: boolean
   showMarkdownTableOfContents: boolean
   canShowMarkdownFrontmatterToggle: boolean
@@ -64,6 +65,7 @@ export function EditorPanelShell({
   activeViewStateId,
   model,
   copiedPathVisible,
+  canShowMarkdownCopy,
   canCopyMarkdown,
   showMarkdownTableOfContents,
   canShowMarkdownFrontmatterToggle,
@@ -125,6 +127,7 @@ export function EditorPanelShell({
           markdownFrontmatterVisible={markdownFrontmatterVisible}
           sideBySide={sideBySide}
           openFileState={model.openFileState}
+          canShowMarkdownCopy={canShowMarkdownCopy}
           canCopyMarkdown={canCopyMarkdown}
           onCopyPath={onCopyPath}
           onCopyMarkdown={onCopyMarkdown}

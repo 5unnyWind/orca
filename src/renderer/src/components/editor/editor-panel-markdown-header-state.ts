@@ -65,7 +65,7 @@ export function getEditorPanelMarkdownHeaderState(params: {
     markdownCopyState: getEditorHeaderCopyMarkdownState({
       isMarkdown: params.isMarkdown,
       isDiffSurface: params.isDiffSurface,
-      content: activeMarkdownContent,
+      content: loadedContent ? activeMarkdownContent : null,
       isBinary: loadedContent?.isBinary === true,
       hasLoadError: Boolean(loadedContent?.loadError)
     }),

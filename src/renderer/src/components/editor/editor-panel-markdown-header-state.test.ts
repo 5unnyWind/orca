@@ -72,4 +72,28 @@ describe('getEditorPanelMarkdownHeaderState', () => {
     })
     expect(state.markdownCopyState.canCopy).toBe(false)
   })
+
+  it('disables copy while preview bytes are still loading even when a draft exists', () => {
+    const loading = getEditorPanelMarkdownHeaderState({
+      activeFile: makeFile(),
+      isMarkdown: true,
+      isDiffSurface: false,
+      mdViewMode: 'rich',
+      editorDrafts: { '/repo/readme.md': '# Draft' },
+      fileContents: {}
+    })
+    expect(loading.activeMarkdownContent).toBe('# Draft')
+    expect(loading.markdownCopyState).toEqual({ canShow: true, canCopy: false })
+
+    const loaded = getEditorPanelMarkdownHeaderState({
+      activeFile: makeFile(),
+      isMarkdown: true,
+      isDiffSurface: false,
+      mdViewMode: 'rich',
+      editorDrafts: { '/repo/readme.md': '# Draft' },
+      fileContents: { '/repo/readme.md': { content: '# Saved', isBinary: false } }
+    })
+    expect(loaded.activeMarkdownContent).toBe('# Draft')
+    expect(loaded.markdownCopyState).toEqual({ canShow: true, canCopy: true })
+  })
 })
